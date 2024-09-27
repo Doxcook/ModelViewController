@@ -3,6 +3,8 @@ package view;
 import javax.swing.*;
 import java.awt.*;
 
+// просто рамка которая содержит панель с информацией
+
 public class Frame extends JFrame {
     public Frame(Panel panel) {
         //настройки окна

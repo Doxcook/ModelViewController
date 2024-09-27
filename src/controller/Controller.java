@@ -3,9 +3,10 @@ package controller;
 import model.ModelCat;
 import view.Frame;
 import view.Panel;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+// самый умный чел среди всех, управляет всеми сразу
 
 public class Controller {
 

@@ -1,5 +1,7 @@
 package model;
 
+// класс над которым происходят действия с помощью Controller
+
 public class ModelCat {
     String name;
     int age;

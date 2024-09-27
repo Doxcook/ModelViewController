@@ -1,9 +1,11 @@
 package view;
 
 import controller.Controller;
-
 import javax.swing.*;
 import java.awt.*;
+
+
+//самый глупый чел, умеет только показывать что ему скажут
 
 public class Panel extends JPanel {
     JLabel oldName;
