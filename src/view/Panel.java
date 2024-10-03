@@ -3,17 +3,22 @@ package view;
 import controller.Controller;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Observable;
+import java.util.Observer;
 
 
 //самый глупый чел, умеет только показывать что ему скажут
 
-public class Panel extends JPanel {
+public class Panel extends JPanel implements Observer {
     JLabel oldName;
     JLabel oldAge;
     JTextField newName;
     JTextField newAge;
     JLabel space;
     JButton button;
+    JTextField echo;
 
 
     public Panel(Controller controller) {
@@ -23,20 +28,37 @@ public class Panel extends JPanel {
         oldAge = new JLabel();
         newName = new JTextField();
         newAge = new JTextField();
-        space = new JLabel();
+        echo = new JTextField();
         button = new JButton("Update");
 
         add(oldName);
         add(oldAge);
         add(newName);
         add(newAge);
-        add(space);
+        add(echo);
         add(button);
+
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //получаем введенные данные
+                String getName = getNewName();
+                int age = getNewAge();
+
+                //обновляем данные объекта
+                controller.setName(getName);
+                controller.setAge(age);
+
+                //Обновляем интерфейс
+                setOldName(controller.getName());
+                setOldAge(controller.getAge());
+            }
+        });
 
 
     }
 
-    // Методы для обновления отображения имени и возраста
+
     public void setOldName(String name) {
         oldName.setText("Current Name: " + name);
     }
@@ -45,7 +67,7 @@ public class Panel extends JPanel {
         oldAge.setText("Current Age: " + age);
     }
 
-    // Методы для получения введённых пользователем данных
+
     public String getNewName() {
         return newName.getText();
     }
@@ -59,8 +81,14 @@ public class Panel extends JPanel {
         }
     }
 
-    public JButton button() {
-        return button;
+    @Override
+    public void update(Observable o, Object arg) {
+        echo.setText("echo myu");
     }
+
+
+//    public JButton button() {
+//        return button;
+//    }
 }
 

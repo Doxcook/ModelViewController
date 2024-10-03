@@ -2,7 +2,10 @@ package model;
 
 // класс над которым происходят действия с помощью Controller
 
-public class ModelCat {
+import java.util.Observable;
+import java.util.Observer;
+
+public class ModelCat extends Observable {
     String name;
     int age;
 
@@ -30,5 +33,7 @@ public class ModelCat {
 
     public void setAge(int age) {
         this.age = age;
+        this.setChanged();
+        this.notifyObservers();
     }
 }
